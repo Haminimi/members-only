@@ -44,6 +44,19 @@ passport.use(
 	})
 );
 
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+	try {
+		const user = await User.findById(id);
+		done(null, user);
+	} catch (err) {
+		done(err);
+	}
+});
+
 app.use(compression());
 if (process.env.NODE_ENV !== 'production') {
 	app.use(logger('dev'));
