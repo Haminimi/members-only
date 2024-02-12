@@ -5,10 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
 const session = require('express-session');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const MongoStore = require('connect-mongo');
+
 const User = require('./models/user');
 
 require('dotenv').config();
@@ -66,7 +68,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+
+const sessionStore = new MongoStore({
+	mongoUrl: mongoDb,
+	collection: 'sessions',
+});
+app.use(
+	session({
+		secret: process.env.SECRET,
+		resave: false,
+		saveUninitialized: true,
+		store: sessionStore,
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24,
+		},
+	})
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
