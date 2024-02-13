@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Error</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto&family=Satisfy&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<%- include('sidebar') %>
+			<div class="error-page-errors">
+				<h1>Error: <%= message %></h1>
+				<h2>Status: <%= error.status %></h2>
+			</div>
+		</div>
+	</body>
+</html>
