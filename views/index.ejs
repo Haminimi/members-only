@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mynerve&family=Quicksand:wght@300..700&family=Roboto&family=Satisfy&display=swap"
+			rel="stylesheet"
+		/>
+			<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<%- include('sidebar') %> <% if (currentUser) {%>
+			<div class="content">
+				<div class="messenger-header">
+					<p>@<%= currentUser.username %></p>
+				</div>
+
+				<div class="messages">
+				<% if (messages.length > 0) {%>
+					<%messages.forEach(message => {%>
+					<div class="message <%= message.author._id.toString() ===
+						currentUser._id.toString() ? 'current-user-message' : ''
+						%>" >
+
+						<div class="message-content">
+							<% if (currentUser.membershipStatus === 'Member' ||
+							currentUser.membershipStatus === 'Admin') {%>
+							<p class="message-author">
+								@<%= message.author.username %>
+							</p>
+							<div class="message-and-timestamp">
+								<span class="message-and-icon"
+									><p class="message-text">
+										<%= message.message %>
+									</p>
+									<% if ( currentUser.membershipStatus ===
+									'Admin') {%>
+									<form
+										action="/delete-message"
+										method="post"
+									>
+										<input
+											type="hidden"
+											name="message"
+											value="<%= message._id %>"
+										/>
+										<button
+											type="submit"
+											class="delete-button"
+											aria-label="Delete message"
+										>
+											<span
+												class="material-symbols-outlined delete-icon"
+												aria-hidden="true"
+											>
+												delete
+											</span>
+										</button>
+									</form>
+
+									<%}%>
+									</span>
+								<p class="timestamp">
+									<%= message.timestamp %>
+								</p>
+							</div>
+						</div>
+						<%}%> <% if (currentUser.membershipStatus === 'Guest')
+						{%>
+						<div class="message>
+							<div class="message-content">
+								<div class="message-and-timestamp">
+									<span class="message-and-icon">
+										<p class="message-text">
+											<%= message.message %>
+										</p>
+										</span>
+								</div>
+							</div>
+						</div>
+						<% } %>
+					</div>
+					<%})%>
+				
+				<%} else {%>
+				<h1>There are no messages.</h1>
+				<%}%>
+			</div>
+				<div class="form-container">
+					<form
+						action="/new-message"
+						method="post"
+						class="message-form"
+					>
+						<label for="message" hidden>Message</label>
+						<input id="message" type="text" name="message" />
+						<input
+							type="hidden"
+							name="author"
+							value="<%= currentUser._id %>"
+						/>
+						<button
+							type="submit"
+							class="send-button"
+							aria-label="Send message"
+						>
+							<span
+								class="material-symbols-outlined send-icon"
+								aria-hidden="true"
+							>
+								send
+							</span>
+						</button>
+					</form>
+				</div>
+
+				<%} else {%> 
+				<div class="not-user-container">
+					<h1 class="log-in-h1">Log in if you want to send messages.</h1>
+					<div class="not-user-messages">
+						<% if (messages.length > 0) {%>
+						<%messages.forEach(message => {%>
+						<div class="message">
+							<div class="message-content">
+								<div class="message-and-timestamp">
+									<span class="message-and-icon">
+										<p class="message-text">
+											<%= message.message %>
+										</p>
+										</span>
+								</div>
+							</div>
+						</div>
+						<%})%>
+						<%} else {%> 
+					<h1>There are no messages.</h1>
+					<%}%>
+					</div>
+				</div>
+				<%}%>
+			</div>
+		</div>
+		<a href="https://github.com/Haminimi" class="github-link">
+				<i class="devicon-github-original"></i>
+		</a>
+	</body>
+</html>
