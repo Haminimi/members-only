@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Log In</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto&family=Satisfy&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="log-in-container">
+			<div class="log-in-form-container">
+				<form action="" method="POST" class="log-in-form">
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input
+							id="username"
+							name="username"
+							placeholder="johndoe"
+							type="text"
+							value="<%= typeof username === 'string' ? username : '' %>"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input
+							id="password"
+							name="password"
+							type="password"
+							minlength="8"
+							required
+						/>
+					</div>
+					<button type="submit" class="log-in-button">Log In</button>
+				</form>
+				<%if (errors && errors.length > 0) {%>
+				<div class="log-in-errors">
+					<% errors.forEach(error => { %>
+					<p><%= error %>.</p>
+					<% }) %>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</body>
+</html>
