@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Profile</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto&family=Satisfy&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<%- include('sidebar') %> <% if (currentUser) { %>
+			<div class="user">
+				<h2 class="profile-header">Profile information and settings</h2>
+				<p><b>Username:</b> <%= currentUser.username %></p>
+				<p><b>First name:</b> <%= currentUser.firstName %></p>
+				<p><b>Last name:</b> <%= currentUser.lastName %></p>
+				<p><b>Membership:</b> <%= currentUser.membershipStatus %></p>
+				<% if (currentUser.membershipStatus === 'Guest') { %>
+				<form action="/member" method="post">
+					<label for="member"
+						>Become a member and join the club by entering the
+						secret code:</label
+					>
+					<div class="form-group" id="member-form-group">
+						<input
+							id="member"
+							type="password"
+							name="code"
+							required
+						/>
+						<input
+							type="hidden"
+							name="user"
+							value="<%= currentUser._id %>"
+						/>
+						<button type="submit" class="member-button">
+							Submit
+						</button>
+					</div>
+				</form>
+				<%if (typeof errors !== 'undefined') {%>
+				<div>
+					<% errors.forEach(error => { %>
+					<p class="secret-code-error"><%= error.msg %></p>
+					<% }) %>
+				</div>
+				<% } %>
+				<h3>
+					<i>
+						You're a guest, you can see messages, but not the author
+						and date of each message.
+					</i>
+				</h3>
+				<% } else if (currentUser.membershipStatus === 'Member' ||
+				currentUser.membershipStatus === 'Admin') { %>
+				<form id="admin-form" action="/admin" method="post">
+					<label for="admin-checkbox"><b>Admin:</b></label>
+					<input id="admin-checkbox" type="checkbox" name="admin"
+					onchange="submitForm()" <%= currentUser.membershipStatus ===
+					'Admin' ? 'checked' : '' %>/>
+					<input
+						type="hidden"
+						name="user"
+						value="<%= currentUser._id %>"
+					/>
+				</form>
+				<% if (currentUser.membershipStatus === 'Member') { %>
+				<h3>
+					<i>
+						You're a member, you can see the author and date of each
+						message.
+					</i>
+				</h3>
+				<% } else if (currentUser.membershipStatus === 'Admin') {%>
+				<h3>
+					<i>
+						You're an admin, you can see the author and date, and
+						you can delete each message.
+					</i>
+				</h3>
+				<% } %> <% } %>
+			</div>
+			<% } %>
+		</div>
+	</body>
+	<script>
+		function submitForm() {
+			document.getElementById('admin-form').submit();
+		}
+	</script>
+</html>
