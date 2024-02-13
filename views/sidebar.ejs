@@ -1,11 +1,67 @@
-<nav>
-	<% if (currentUser) { %>
-	<a href="/">Home</a>
-	<a href="/profile">Profile</a>
-	<a href="/log-out">Log out</a>
-	<% } else {%>
-	<a href="/">Home</a>
-	<a href="/log-in">Log in</a>
-	<a href="/sign-up">Sign up</a>
-	<% } %>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sidebar</title>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+	</head>
+	<body>
+		<nav class="sidebar">
+			<% if (currentUser) { %>
+			<a href="/">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						home
+					</span>
+					<p class="sidebar-link-text">Home</p>
+				</span>
+			</a>
+			<a href="/profile">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						person
+					</span>
+					<p class="sidebar-link-text">Profile</p>
+				</span>
+			</a>
+			<a href="/log-out">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						logout
+					</span>
+					<p sidebar-link-text>Log out</p>
+				</span>
+			</a>
+			<% } else {%>
+			<a href="/">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						home
+					</span>
+					<p class="sidebar-link-text">Home</p>
+				</span>
+			</a>
+			<a href="/log-in">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						login
+					</span>
+					<p class="sidebar-link-text">Log in</p>
+				</span>
+			</a>
+			<a href="/sign-up">
+				<span class="sidebar-link">
+					<span class="material-symbols-outlined sidebar-icon">
+						person_add
+					</span>
+					<p class="sidebar-link-text">Sign up</p>
+				</span>
+			</a>
+			<% } %>
+		</nav>
+	</body>
+</html>
