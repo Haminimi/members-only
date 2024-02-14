@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+:root {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
+	--primary-dark: #735da5;
+	--primary-light: #d3c5e5;
+	color: #2a3132;
+}
+
+body {
+	background-color: dimgray;
+}
+
+a {
+	text-decoration: none;
+	color: #31473a;
+}
+
+button {
+	cursor: pointer;
+}
+
+input {
+	height: 35px;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+}
+
+input:focus {
+	outline: 2px solid cornflowerblue;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 6px;
+	background-color: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #645191;
+}
