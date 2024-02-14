@@ -1,4 +1,3 @@
-messages container
 # Members Only
 ## Description
 A messenger app with authentication, featuring users with different abilities and permissions. [The project](https://www.theodinproject.com/lessons/nodejs-members-only) is a part of [The Odin Project](https://www.theodinproject.com/dashboard)'s Node course within [The Odin Project](https://www.theodinproject.com/dashboard)'s curriculum. The Odin Project provides a high quality web development education maintained by an open source community.
