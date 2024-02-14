@@ -186,3 +186,145 @@ nav {
 .sign-up-errors {
 	bottom: -50px;
 }
+
+.container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	min-height: 100vh;
+	padding: 30px;
+	padding-left: 50px;
+}
+
+.content {
+	width: 60%;
+	border: 3px solid;
+	border-radius: 5px;
+	border-color: gainsboro;
+}
+
+.log-in-h1 {
+	margin-bottom: 10px;
+	color: whitesmoke;
+}
+
+.messenger-header {
+	padding: 5px;
+	border-radius: 2px 2px 0px 0px;
+	background-color: var(--primary-dark);
+	color: whitesmoke;
+}
+
+.messages,
+.not-user-messages {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 10px;
+	max-height: 70vh;
+	overflow-y: auto;
+	padding: 5px;
+	padding-bottom: 10px;
+	background-color: var(--primary-light);
+}
+
+.not-user-messages {
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.message {
+	display: flex;
+	width: 45%;
+	border-radius: 10px;
+}
+
+.message-content {
+	width: 100%;
+}
+
+.message-author {
+	font-weight: bold;
+	font-style: italic;
+	color: var(--primary-dark);
+}
+
+.message-and-timestamp {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	width: 100%;
+	padding: 10px;
+	border: 2px solid var(--primary-dark);
+	border-radius: 10px;
+	background-color: white;
+	color: #31473a;
+}
+
+.message-and-icon {
+	display: flex;
+	justify-content: space-between;
+}
+
+.message-text {
+	max-width: 95%;
+	font-size: 20px;
+}
+
+.timestamp {
+	align-self: flex-end;
+	color: dimgray;
+}
+
+.current-user-message {
+	align-self: flex-end;
+}
+
+.delete-button,
+.send-button {
+	padding: 0px;
+	border: none;
+	background-color: inherit;
+}
+
+.send-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 5%;
+	height: 35px;
+}
+
+.material-symbols-outlined.delete-icon {
+	font-size: 20px;
+	color: #31473a;
+}
+
+.message-form-container {
+	padding: 10px;
+	background-color: var(--primary-dark);
+}
+
+.message-form {
+	display: flex;
+	gap: 10px;
+}
+
+#message {
+	width: 95%;
+	padding-left: 5px;
+	border: none;
+	border-radius: 10px;
+}
+
+#message:focus {
+	outline: 2px solid var(--primary-light);
+}
+
+.material-symbols-outlined.send-icon {
+	font-size: 40px;
+	color: var(--primary-light);
+}
+
+.material-symbols-outlined.send-icon:hover {
+	color: whitesmoke;
+}
