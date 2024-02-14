@@ -134,3 +134,55 @@ nav {
 .material-symbols-outlined.sidebar-icon {
 	font-size: 40px;
 }
+
+.log-in-container,
+.sign-up-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.log-in-form-container,
+.sign-up-form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	padding: 30px 40px;
+	gap: 10px;
+	border-radius: 5px;
+	background-color: var(--primary-light);
+}
+
+.log-in-form,
+.sign-up-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.log-in-button,
+.sign-up-button {
+	font-size: 22px;
+	padding: 5px 0px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--primary-dark);
+	color: whitesmoke;
+}
+
+.log-in-errors,
+.sign-up-errors {
+	position: absolute;
+	bottom: -60px;
+	font-size: 20px;
+	color: whitesmoke;
+}
+
+.sign-up-errors {
+	bottom: -50px;
+}
