@@ -1,5 +1,5 @@
 const express = require('express');
-/* const createError = require('http-errors'); */
+const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,13 +10,13 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 
 const User = require('./models/user');
 
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const mongoDb = process.env.MONGODB;
 mongoose.connect(mongoDb);
@@ -30,21 +30,24 @@ app.set('view engine', 'ejs');
 
 //Passport
 passport.use(
-	new LocalStrategy(async (username, password, done) => {
-		try {
-			const user = await User.findOne({ username: username });
-			if (!user) {
-				return done(null, false, { message: 'Incorrect username' });
+	new LocalStrategy(
+		{ failureFlash: true },
+		async (username, password, done) => {
+			try {
+				const user = await User.findOne({ username: username });
+				if (!user) {
+					return done(null, false, { message: 'Incorrect username' });
+				}
+				const match = await bcrypt.compare(password, user.password);
+				if (!match) {
+					return done(null, false, { message: 'Incorrect password' });
+				}
+				return done(null, user);
+			} catch (err) {
+				done(err);
 			}
-			const match = await bcrypt.compare(password, user.password);
-			if (!match) {
-				return done(null, false, { message: 'Incorrect password' });
-			}
-			return done(null, user);
-		} catch (err) {
-			done(err);
 		}
-	})
+	)
 );
 
 passport.serializeUser((user, done) => {
@@ -84,6 +87,8 @@ app.use(
 		},
 	})
 );
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -93,11 +98,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-/* app.use(function (req, res, next) {
+app.use(function (req, res, next) {
 	next(createError(404));
-}); */
+});
 
 app.use(function (err, req, res, next) {
 	res.locals.message = err.message;
