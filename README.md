@@ -4,7 +4,7 @@ A messenger app with authentication, featuring users with different abilities an
 ## Users Permissions and Live Preview
 Anyone who comes to the site is able to see a list of all messages, with the author’s name hidden. Users are able to sign-up and create messages, but only users that are members are able to see the author and date of each message. Finally, there is an admin user that is able to see everything and also has the ability to delete messages. In order to become a member, you have to enter the secret code in the form at the profile page, the code is:
 ```js
-'secretcode'
+secretcode
 ```
 [The App](https://haminimi-members-only.glitch.me)
 ## Main Features
