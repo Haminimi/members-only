@@ -94,3 +94,19 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #645191;
 }
+
+.github-link {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}
+
+.devicon-github-original {
+	font-size: 40px;
+	color: whitesmoke;
+	transition: color 0.15s linear;
+}
+
+.devicon-github-original:hover {
+	color: var(--primary-light);
+}
