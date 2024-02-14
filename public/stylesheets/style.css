@@ -221,6 +221,7 @@ nav {
 	flex-direction: column-reverse;
 	gap: 10px;
 	max-height: 70vh;
+	min-height: 30vh;
 	overflow-y: auto;
 	padding: 5px;
 	padding-bottom: 10px;
@@ -330,27 +331,27 @@ nav {
 }
 
 .user {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	position: relative;
 	width: 60%;
-	padding: 20px 30px;
+	padding: 0px;
 	font-size: 23px;
-	border-radius: 0px 0px 5px 5px;
+	border-radius: 5px;
 	background-color: white;
 	color: dimgray;
 }
 
+.profile-content {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 20px 30px;
+}
+
 .profile-header {
-	position: absolute;
-	top: -45px;
-	left: 0px;
-	color: whitesmoke;
-	background-color: var(--primary-dark);
 	width: 100%;
 	padding: 0px 10px;
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 4px 4px 0px 0px;
+	background-color: var(--primary-dark);
+	color: whitesmoke;
 }
 
 #member-form-group {
@@ -404,4 +405,48 @@ nav {
 	border-radius: 10px;
 	background-color: white;
 	color: dimgray;
+}
+
+@media only screen and (max-width: 800px) {
+	.container {
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 50px;
+		padding: 30px 10px;
+	}
+
+	.content {
+		width: 100%;
+	}
+
+	.messages {
+		min-height: 30vh;
+	}
+
+	.message {
+		width: 80%;
+	}
+
+	.material-symbols-outlined.send-icon {
+		font-size: 30px;
+	}
+
+	.user {
+		width: 100%;
+	}
+
+	.profile-header {
+		width: 100%;
+	}
+
+	.profile-content {
+		padding: 10px;
+	}
+
+	.github-link {
+		top: 10px;
+		left: 10px;
+		width: 50px;
+		height: 50px;
+	}
 }
