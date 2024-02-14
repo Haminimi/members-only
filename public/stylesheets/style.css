@@ -398,3 +398,10 @@ nav {
 .secret-code-error {
 	color: crimson;
 }
+
+.error-page-errors {
+	padding: 10px 30px;
+	border-radius: 10px;
+	background-color: white;
+	color: dimgray;
+}
