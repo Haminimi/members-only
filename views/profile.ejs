@@ -17,7 +17,7 @@
 			<%- include('sidebar') %> <% if (currentUser) { %>
 			<div class="user">
 				<h2 class="profile-header">Profile information and settings</h2>
-				<p><b>Username:</b> <%= currentUser.username %></p>
+				<p><b>Username:</b> @<%= currentUser.username %></p>
 				<p><b>First name:</b> <%= currentUser.firstName %></p>
 				<p><b>Last name:</b> <%= currentUser.lastName %></p>
 				<p><b>Membership:</b> <%= currentUser.membershipStatus %></p>
