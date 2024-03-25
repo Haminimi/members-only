@@ -6,7 +6,7 @@ Anyone who comes to the site is able to see a list of all messages, with the aut
 ```js
 secretcode
 ```
-[The App](https://haminimi-members-only.glitch.me)
+[The App](https://haminimi-members-only.glitch.me).
 ## Main Features
 - **Authentication**
 - **MVC Architecture**
@@ -22,8 +22,8 @@ secretcode
 - Vanilla CSS
 
 **Tools**
-- Git
 - Visual Studio Code
+- Git
 ## Covered Topics
 **This section mentions the main topics covered during project work and prior lessons**
 - Authentication/Passport
